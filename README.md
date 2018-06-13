@@ -1,4 +1,4 @@
-#React Countdown Component
+# React Countdown Component
 
 ###Description
 Tiny, easy and customizable component providing you with an updated counter of **hours, minutes, seconds and/or milliseconds** –one, some or all of them– or just the total count of **milliseconds** remaining for a given lapse of time –in ms.

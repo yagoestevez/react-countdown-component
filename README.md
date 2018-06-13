@@ -6,14 +6,16 @@ Tiny, easy and customizable component providing you with an updated counter of *
 The updated counter may be displayed in your apps with **any tags, styles or any customization** you need to show it.
 
 ### Demo
-You can dive into the examples' code in this URL **URL*** or review the code in its [GitHub repo](https://github.com/yagoestevez/react-countdown-component).
+You can dive into the example or review the code in the [GitHub repo](https://github.com/yagoestevez/react-countdown-component).
 
-![react-countdown-component demo](URL)<br />
+![react-countdown-component demo](https://raw.githubusercontent.com/yagoestevez/react-countdown-component/master/demo/ReactCountdownComponent-Example.gif)<br />
 
 ### Requirements
->Node >= 6.x
->React >= 16
->React's Prop-Types >= 16
+```
+Node >= 6.x
+React >= 16
+React's Prop-Types >= 16
+```
 
 ### Install
 ```
@@ -23,9 +25,11 @@ npm install --save react-countdown-component
 ```
 
 ### Usage
-You can use this counter in various ways. This is one of the simplest examples.
+You can use this counter in various ways. Check the demo directory in the repo for an in-depth example. This is one of the simplest implementation:
 
 ```js
+import CountDown, {CountdownContext} from 'react-countdown-component';
+
 render() {
   const { hours, minutes, seconds } = this.state.counter;
   return (
@@ -78,4 +82,4 @@ These are the functions you can use to manipulate the generated counter (see exa
 [MIT](https://github.com/yagoestevez/react-countdown-component/blob/master/README.md)
 
 ### Author
-[Yago Estévez](https://github.com/yagoestevez)
+[Yago Estévez](https://twitter.com/yagoestevez)

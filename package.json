@@ -1,5 +1,5 @@
 {
-  "name": "React-Countdown-Component",
+  "name": "react-countdown-component",
   "version": "0.1.0",
   "description": "React component for an easy countdown",
   "main": "lib/index.js",

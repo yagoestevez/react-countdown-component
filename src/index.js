@@ -55,9 +55,9 @@ export default class CountDown extends Component {
   }
 
   startCountdown = ( ) => {
-    this.onStart( );
     this.updateCounter( );
     this.timerRunning = true;
+    this.onStart( );
   }
 
   updateCounter = ( ) => {
@@ -73,9 +73,9 @@ export default class CountDown extends Component {
   }
 
   pauseCountdown = ( ) => {
-    this.onPause( );
     this.clearInterval( );
     this.timerRunning = false;
+    this.onPause( );
   }
 
   playPauseCountdown = ( ) => {
@@ -84,7 +84,6 @@ export default class CountDown extends Component {
   }
   
   resetCountdown = ( reset = true ) => {
-    this.onReset( );
     this.clearInterval( );
     this.countDown = this.initTime;
     if ( !reset )
@@ -92,6 +91,7 @@ export default class CountDown extends Component {
     else
       this.onUpdate( this.TC.getFullTime( this.initTime, this.leftPadding ) );
     this.timerRunning = false;
+    this.onReset( );
   }
 
   onStart = ( ) => {
@@ -124,10 +124,10 @@ export default class CountDown extends Component {
   render() {
     return (
       <CountdownContext.Provider value = { {
-          start: ( ) => this.startCountdown( ),
-          pause: ( ) => this.pauseCountdown( ),
-          reset: ( ) => this.resetCountdown( ),
-          playPause: ( ) => this.playPauseCountdown( )
+          start     : this.startCountdown,
+          pause     : this.pauseCountdown,
+          reset     : this.resetCountdown,
+          playPause : this.playPauseCountdown
         } }
       >
         { this.props.children }

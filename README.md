@@ -25,7 +25,6 @@ npm install --save react-countdown-component
 ### Usage
 You can use this counter in various ways. This is one of the simplest examples.
 
-First, use the CountDown component:
 ```js
 render() {
   const { hours, minutes, seconds } = this.state.counter;

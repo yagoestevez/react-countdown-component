@@ -1,7 +1,7 @@
 {
   "name": "React-Countdown-Component",
-  "version": "1.0.0",
-  "description": "React-Countdown-Component React component",
+  "version": "0.1.0",
+  "description": "React component for an easy countdown",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -27,11 +27,11 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0"
   },
-  "author": "",
+  "author": "Yago Estévez",
   "homepage": "",
   "license": "MIT",
-  "repository": "",
+  "repository": "https://github.com/yagoestevez/react-countdown-component",
   "keywords": [
-    "react-component"
+    "react-component", "countdown", "timer", "context", "react", "javascript"
   ]
 }

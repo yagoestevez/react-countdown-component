@@ -25,35 +25,44 @@ npm install --save react-countdown-component
 ### Usage
 You can use this counter in various ways. This is just an example.
 
-~~import CountDown, { CountdownContext } from '../../src'~~
-```
+First, use the CountDown component:
+```js
 <CountDown
-  from        = { this.state.counter }            // Your state.
-  updateEvery = { 1000 }                          // Interval (in ms).
-  onUpdate    = { time => this.onUpdate( time ) } // Tasks on update.
-  onFinish    = { ( )  => this.onFinish(  )     } // Tasks on finish.
+  from        = { this.state.counter }              // Your state to hold counter's data.
+  updateEvery = { 1000 }                            // Updating interval in ms.
+  leftPadding = { '0' }                             // Zeroes on the left of number < 10.
+  onStart     = { ( )   => console.log( 'start' ) } // Triggered on counter's start.
+  onPause     = { ( )   => console.log( 'pause' ) } // Triggered on counter's stop.
+  onReset     = { ( )   => console.log( 'reset' ) } // Triggered on counter's reset.
+  onUpdate    = { value => this.onUpdate( value ) } // Triggered on each counter's update.
+  onFinish    = { ( )   => console.log( 'done' ) }  // Triggered when the countdown is finished.
 >
-  <CountdownContext.Consumer>
-    { ( counter ) => (
-      <React.Fragment>
-        // Use the countdown wherever you want, like:
-        <h1>{ hours }:{ minutes }:{ seconds }:{ millis }</h1>
-        // or...
-        // <h2>{ hours }.{ minutes }.{ seconds }</h2>
-        // <p>{ minutes }.{ seconds }</p>
-        // <span>{ totalMs }</span> ...
-
-        // You can use any of this buttons –or whatever you want– to
-        // play, pause, reset or a play/pause toggler the counter.
-        <button onClick = { counter.start }     >Start Countdown</button>
-        <button onClick = { counter.pause }     >Pause Countdown</button>
-        <button onClick = { counter.reset }     >Reset Countdown</button>
-        <button onClick = { counter.playPause } >Play/Pause Countdown</button>
-      </React.Fragment>
-    ) }
-  </CountdownContext.Consumer>
+  // Here goes the CountdownContext.Consumer component
 </CountDown>
 ```
+And inside of the CountDown component, the Consumer for the CountdownContext:
+```js
+<CountdownContext.Consumer>
+  { ( counter ) => (
+    <React.Fragment>
+      // Use the countdown however you want, like this:
+      <h1>{ hours }:{ minutes }:{ seconds }:{ millis }</h1>
+      // or this:
+      <h2>{ hours }.{ minutes }.{ seconds }</h2>
+      // or even like this:
+      <progress value = { initValue - currValue } max = { initValue }></progress>
+
+      // You may use any of these buttons –or whatever you want other than a button–
+      // to play, pause, reset or a toggler play/pause control for the counter.
+      <button onClick = { counter.start }     >Start Countdown</button>
+      <button onClick = { counter.pause }     >Pause Countdown</button>
+      <button onClick = { counter.reset }     >Reset Countdown</button>
+      <button onClick = { counter.playPause } >Play/Pause Countdown</button>
+    </React.Fragment>
+  ) }
+</CountdownContext.Consumer>
+```
+
 #### Props
 These are the properties you may pass to the CountDown component:
 | property | propType | required | default | description |

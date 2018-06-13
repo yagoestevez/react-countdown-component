@@ -19,7 +19,6 @@ React's Prop-Types >= 16
 
 ### Install
 ```
-// TODO
 npm install --save react prop-types
 npm install --save react-countdown-component
 ```
@@ -79,7 +78,7 @@ These are the functions you can use to manipulate the generated counter (see exa
 | playPause | function | yes* | null | Toggles between play and pause. |
 
 ### License
-[MIT](https://github.com/yagoestevez/react-countdown-component/blob/master/README.md)
+[MIT](https://github.com/yagoestevez/react-countdown-component/blob/master/LICENSE)
 
 ### Author
 [Yago Estévez](https://twitter.com/yagoestevez)

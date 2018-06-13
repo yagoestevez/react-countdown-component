@@ -6,9 +6,9 @@ Tiny, easy and customizable component providing you with an updated counter of *
 The updated counter may be displayed in your apps with **any tags, styles or any customization** you need to show it.
 
 ### Demo
-You can dive into the examples' code in this URL **URL*** or review the code in its [GitHub repo](https://github.com/SpaniardDev/react-countdown-component).
+You can dive into the examples' code in this URL **URL*** or review the code in its [GitHub repo](https://github.com/yagoestevez/react-countdown-component).
 
-~~insert animated gif~~
+![react-countdown-component demo](URL)<br />
 
 ### Requirements
 >Node >= 6.x
@@ -75,7 +75,7 @@ These are the functions you can use to manipulate the generated counter (see exa
 | playPause | function | yes* | null | Toggles between play and pause. |
 
 ### License
-[MIT](https://github.com/SpaniardDev/react-countdown-component/blob/master/README.md)
+[MIT](https://github.com/yagoestevez/react-countdown-component/blob/master/README.md)
 
 ### Author
-[Yago Estévez](https://github.com/SpaniardDev)
+[Yago Estévez](https://github.com/yagoestevez)

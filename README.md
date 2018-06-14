@@ -57,6 +57,7 @@ render() {
 
 #### Props
 These are the properties you may pass to the CountDown component:
+
 | property | propType | required | default | description |
 |  :---:  |  :---:  |  :---:  |  :---:  |  :---  |
 | from | object | yes | null | Requires an object (see example). |
@@ -69,7 +70,8 @@ These are the properties you may pass to the CountDown component:
 | onFinish | function | no | null | Callback on finish. |
 
 #### RenderProps
-These are the functions you can use to manipulate the generated counter (see example).
+These are the functions you can use to manipulate the generated counter (see example):
+
 | property | propType | required | default | description |
 |  :---:  |  :---:  |  :---:  |  :---:  |  :---  |
 | start | function | yes* | null | Starts the countdown. |

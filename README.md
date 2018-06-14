@@ -58,7 +58,7 @@ render() {
 #### Props
 These are the properties you may pass to the CountDown component:
 | property | propType | required | default | description |
-| -------- |:--------:|:--------:|:-------:| ----------- |
+|  :---:  |  :---:  |  :---:  |  :---:  |  :---  |
 | from | object | yes | null | Requires an object (see example). |
 | updateEvery | number | no | 1000ms | Milliseconds between updates. |
 | leftPadding | string | no | '0' | Number of zeroes on the left. |
@@ -71,7 +71,7 @@ These are the properties you may pass to the CountDown component:
 #### RenderProps
 These are the functions you can use to manipulate the generated counter (see example).
 | property | propType | required | default | description |
-| -------- |:--------:|:--------:|:-------:| ----------- |
+|  :---:  |  :---:  |  :---:  |  :---:  |  :---  |
 | start | function | yes* | null | Starts the countdown. |
 | pause | function | no | null | Pauses the counter. |
 | reset | function | no | null | Stops the counter and resets it. |

@@ -3,7 +3,6 @@
  *  @author  Yago Estévez.
  *  @license MIT.
  *  @version 0.0.1.
- *  @license MIT License.
  */
 import React, { Component, Fragment } from 'react';
 import PropTypes                      from 'prop-types';
@@ -34,7 +33,7 @@ export default class CountDown extends Component {
   constructor( props ) {
     super( props );
     this.TC = new TimeConverter( );
-    this.initTime       = this.TC.getMilliseconds( props.from );
+    this.resetTime       = this.TC.getMilliseconds( props.from );
     this.countDown      = this.TC.getMilliseconds( props.from );
     this.leftPadding    = props.leftPadding || 0;
     this.timerRunning   = false;
@@ -54,12 +53,29 @@ export default class CountDown extends Component {
     children    : PropTypes.node
   }
 
+  /**
+   * If props.from has been changed by the parent component, resetTime
+   * must re-evaluate with props so the reset method works properly.
+   * The countdown is also updated to verify that it holds the updated
+   * values from props.
+   * Then updateCounter() is called to begin/continue the countdown and
+   * onStart() event is triggered to be used by the parent component.
+   */
   startCountdown = ( ) => {
+    this.resetTime = this.resetTime !== this.countDown
+      ? this.resetTime
+      : this.TC.getMilliseconds( this.props.from );
+    this.countDown = this.TC.getMilliseconds( this.props.from );
     this.updateCounter( );
     this.timerRunning = true;
     this.onStart( );
   }
 
+  /**
+   * onUpdate() event is triggered with the updated countdown so the parent
+   * component can use the updated values.
+   * Then, the countdown is updated through an interval (1000 by default).
+   */
   updateCounter = ( ) => {
     this.onUpdate( this.TC.getFullTime( this.countDown, this.leftPadding ) );
     if ( !this.intervalId ) {
@@ -72,28 +88,42 @@ export default class CountDown extends Component {
     }
   }
 
+  /**
+   * The countdown interval is stopped and onPause() event triggered
+   * to be used by the parent component.
+   */
   pauseCountdown = ( ) => {
     this.clearInterval( );
     this.timerRunning = false;
     this.onPause( );
   }
 
+  /**
+   * The countdown starts if it's not already running or it pauses if so.
+   */
   playPauseCountdown = ( ) => {
     if ( !this.timerRunning ) this.startCountdown( );
     else this.pauseCountdown( );
   }
   
+  /**
+   * The countdown stops, clearing the interval, and 
+   */
   resetCountdown = ( reset = true ) => {
     this.clearInterval( );
-    this.countDown = this.initTime;
+    this.countDown = this.TC.getMilliseconds( this.props.from );
     if ( !reset )
       this.onUpdate( this.TC.getFullTime( 0, this.leftPadding ) );
     else
-      this.onUpdate( this.TC.getFullTime( this.initTime, this.leftPadding ) );
+      this.onUpdate( this.TC.getFullTime( this.resetTime, this.leftPadding ) );
     this.timerRunning = false;
     this.onReset( );
   }
 
+  /**
+   * The following methods call the event functions passed via props
+   * from the parent component.
+   */
   onStart = ( ) => {
     return this.props.onStart( );
   }
@@ -116,6 +146,9 @@ export default class CountDown extends Component {
     return this.props.onFinish( );
   }
 
+  /**
+   * Resets the intervalId to be reused.
+   */
   clearInterval = ( ) => {
     if ( this.intervalId ) clearInterval( this.intervalId );
     this.intervalId = null;
@@ -123,6 +156,9 @@ export default class CountDown extends Component {
 
   render() {
     return (
+      /**
+       * Makes use of a context provider to pass the events to the parent.
+       */
       <CountdownContext.Provider value = { {
           start     : this.startCountdown,
           pause     : this.pauseCountdown,
@@ -135,7 +171,10 @@ export default class CountDown extends Component {
     );
   }
 
-  componentWillMount = ( ) => {
+  /**
+   * Lifecycle methos.
+   */
+  componentDidMount = ( ) => {
     this.onUpdate( this.TC.getFullTime( this.countDown, this.leftPadding ) );
   }
 
